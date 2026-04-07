@@ -1414,43 +1414,60 @@
       clearInterval(slideshowTimer);
       slideshowTimer = null;
     }
+
     cur = 0;
     const slides = document.querySelectorAll('.slideshow .slide');
     const numEl = document.getElementById('slide-num');
     if (!slides.length || !numEl) return;
 
-    slides.forEach((slide, i) => slide.classList.toggle('active', i === 0));
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === 0);
+    });
     numEl.textContent = `1 / ${slides.length}`;
 
     window.goSlide = function(n) {
       const currentSlides = document.querySelectorAll('.slideshow .slide');
       const currentNumEl = document.getElementById('slide-num');
       if (!currentSlides.length || !currentNumEl) return;
+
       currentSlides[cur].classList.remove('active');
       cur = (n + currentSlides.length) % currentSlides.length;
       currentSlides[cur].classList.add('active');
       currentNumEl.textContent = `${cur + 1} / ${currentSlides.length}`;
+
       clearInterval(slideshowTimer);
       slideshowTimer = setInterval(window.nextSlide, 5000);
     };
 
-    window.nextSlide = function() { window.goSlide(cur + 1); };
-    window.prevSlide = function() { window.goSlide(cur - 1); };
+    window.nextSlide = function() {
+      window.goSlide(cur + 1);
+    };
+
+    window.prevSlide = function() {
+      window.goSlide(cur - 1);
+    };
+
     slideshowTimer = setInterval(window.nextSlide, 5000);
   }
 
   function gGo(id, n) {
     const track = document.getElementById('gt-' + id);
     if (!track) return;
+
     const total = track.children.length;
     if (!total) return;
+
     const nextIndex = ((n % total) + total) % total;
     gState[id] = nextIndex;
     track.style.transform = `translateX(-${nextIndex * 100}%)`;
+
     const count = document.getElementById('gc-' + id);
-    if (count) count.textContent = `${nextIndex + 1} / ${total}`;
-    document.querySelectorAll(`#gd-${id} .gdot`).forEach((d, i) => {
-      d.classList.toggle('on', i === nextIndex);
+    if (count) {
+      count.textContent = `${nextIndex + 1} / ${total}`;
+    }
+
+    document.querySelectorAll(`#gd-${id} .gdot`).forEach((dot, i) => {
+      dot.classList.toggle('on', i === nextIndex);
     });
   }
 
@@ -1462,19 +1479,38 @@
   }
 
   function closeAllModals() {
-    document.querySelectorAll('.modal-bg.open').forEach(function(m) {
-      m.classList.remove('open');
+    document.querySelectorAll('.modal-bg.open').forEach((modal) => {
+      modal.classList.remove('open');
     });
     document.body.style.overflow = '';
   }
 
   function openModal(id) {
     closeAllModals();
-    const modal = document.getElementById('modal-' + id);
-    if (!modal) return;
-    modal.classList.add('open');
-    modal.scrollTop = 0;
+
+    const modalBg = document.getElementById('modal-' + id);
+    if (!modalBg) return;
+
+    modalBg.classList.add('open');
+    modalBg.scrollTop = 0;
+
+    const modalCard = modalBg.querySelector('.modal');
+    if (modalCard) {
+      modalCard.scrollTop = 0;
+    }
+
     document.body.style.overflow = 'hidden';
+
+    requestAnimationFrame(() => {
+      const rect = modalBg.getBoundingClientRect();
+      const modalHeight = modalCard ? modalCard.offsetHeight : 0;
+      const target = window.scrollY + rect.top - Math.max(0, (window.innerHeight - modalHeight) / 2);
+      window.scrollTo({
+        top: Math.max(0, target),
+        behavior: 'smooth'
+      });
+    });
+
     gGo(id, 0);
   }
 
@@ -1487,11 +1523,13 @@
 
   function closeOut(e, id) {
     const modal = document.getElementById('modal-' + id);
-    if (modal && e.target === modal) closeModal(id);
+    if (modal && e.target === modal) {
+      closeModal(id);
+    }
   }
 
   function setActiveNav(page) {
-    document.querySelectorAll('[data-page-link]').forEach(function(link) {
+    document.querySelectorAll('[data-page-link]').forEach((link) => {
       link.classList.toggle('active', link.getAttribute('data-page-link') === page);
     });
   }
@@ -1499,7 +1537,8 @@
   function initPageEnhancements() {
     initSlides();
     setActiveNav(document.body.dataset.page || 'index');
-    document.querySelectorAll('.g-track').forEach(function(track) {
+
+    document.querySelectorAll('.g-track').forEach((track) => {
       const id = track.id.replace('gt-', '');
       gGo(id, 0);
     });
@@ -1518,11 +1557,12 @@
     try {
       const response = await fetch(url, { headers: { 'X-Requested-With': 'spa' } });
       if (!response.ok) throw new Error('Failed to load page.');
+
       const text = await response.text();
       const parser = new DOMParser();
       const doc = parser.parseFromString(text, 'text/html');
-
       const incomingShell = doc.getElementById('page-shell');
+
       if (!incomingShell) {
         window.location.href = url;
         return;
@@ -1551,11 +1591,13 @@
     }
   }
 
-  document.addEventListener('click', function(e) {
+  document.addEventListener('click', (e) => {
     const link = e.target.closest('a[data-spa]');
     if (!link) return;
+
     const href = link.getAttribute('href');
     if (!href) return;
+
     if (link.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     if (href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http')) return;
 
@@ -1563,12 +1605,14 @@
     loadPage(href, true);
   });
 
-  window.addEventListener('popstate', function() {
+  window.addEventListener('popstate', () => {
     loadPage(location.href, false);
   });
 
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeAllModals();
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeAllModals();
+    }
   });
 
   window.addEventListener('DOMContentLoaded', initPageEnhancements);
