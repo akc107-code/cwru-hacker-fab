@@ -322,38 +322,23 @@
       margin: 0;
     }
 
-    .about-links {
-      display: flex;
-      gap: 1px;
-      background: #cccccc;
-      border: 1px solid #cccccc;
+    .about-notes {
+      display: grid;
+      gap: 18px;
+      padding-top: 6px;
     }
 
-    .about-link-item {
-      flex: 1;
-      background: #ffffff;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      color: #555555;
+    .about-note {
+      max-width: 720px;
     }
 
-    .about-link-item:hover { background: #f0f0f0; color: #333333; }
-
-    .about-link-item .sub {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.58rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #888888;
-      display: block;
-      margin-top: 2px;
+    .about-note p {
+      font-size: 0.9rem;
+      color: #666666;
+      font-weight: 300;
+      line-height: 1.8;
+      margin: 0;
     }
-
-    .about-link-item .arr { color: #cccccc; }
-    .about-link-item:hover .arr { color: #666666; }
 
     /* ── Projects ── */
     #projects { background: #f5f5f5; }
@@ -910,7 +895,6 @@
     @media (max-width: 760px) {
       .nav-links li:not(:last-child) { display: none; }
       .pillars { grid-template-columns: 1fr; }
-      .about-links { flex-direction: column; }
       .project-row { grid-template-columns: 100px 1fr auto; }
       .proj-grid { grid-template-columns: 1fr 1fr; }
       .team-exec { grid-template-columns: 1fr 1fr; }
@@ -989,7 +973,7 @@
       <li><a href="projects.html" data-page-link="projects" data-spa>Projects</a></li>
       <li><a href="team.html" data-page-link="team" data-spa>Team</a></li>
       <li><a href="support.html" data-page-link="support" data-spa>Support</a></li>
-      <li><a href="https://community.case.edu/chips/club_signup" class="nav-join">Join Us</a></li>
+      <li><a href="https://community.case.edu/chips/club_signup" class="nav-join">Join Us!</a></li>
     </ul>
   </div>
 </nav>
@@ -1005,7 +989,7 @@
   <div class="slideshow">
     <div class="slide active"><div class="slide-ph">[ photo: lab / equipment ]</div></div>
     <div class="slide"><img src="studentsWorking.jpg" alt="Students working in the lab"></div>
-    <div class="slide"><img src="stepper.jpg" alt="UV lithography stepper"></div>
+    <div class="slide"><img src="assets/images/stepper.jpg" alt="UV lithography stepper"></div>
     <div class="slide"><div class="slide-ph">[ photo: chip design session ]</div></div>
     <div class="slide-controls">
       <button class="slide-btn" onclick="prevSlide()">&#8592;</button>
@@ -1016,13 +1000,13 @@
 
   <div class="wrap">
     <div class="hero-body">
-      <div class="hero-tagline">Nanofab for students, by students</div>
-      <h1>CWRU<br/>HACKER <span>FAB</span></h1>
-      <p class="hero-desc">We're a club building semiconductors from scratch, without a cleanroom, research lab, or any expensive lab equipment. Anyone can join.</p>
+      <div class="hero-tagline">a fab for students, by students</div>
+      <h1>CWRU CHIPS<br/><span>HACKER FAB</span></h1>
+      <p class="hero-desc">A club building semiconductors from scratch without a cleanroom or any expensive lab equipment</p>
       <div class="hero-actions">
-        <a href="https://community.case.edu/chips/club_signup" class="btn btn-blue">Join the Club</a>
+        <a href="https://community.case.edu/chips/club_signup" class="btn btn-blue">CampusGroups</a>
         <a href="https://discord.gg/68jVuvCdPY" target="_blank" class="btn btn-discord">Discord</a>
-        <a href="#projects" class="btn btn-outline">See Our Projects</a>
+        <a href="https://docs.hackerfab.org/home/individual-fab-information/case-western-reserve-university" target="_blank" class="btn btn-outline">Docs</a>
       </div>
     </div>
   </div>
@@ -1031,49 +1015,28 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <div class="label">About</div>
-    <h2>What We Do</h2>
+    <h2>INTRODUCTION</h2>
+    <p class="about-intro">CWRU CHIPS is an organization founded by students, where we build our own microfabrication equipment and design semiconductor chips. 
+    We're the Case Western Reserve chapter of the international <a href="https://hackerfab.org" target="_blank" style="color:#3a78c9;">Hacker Fab</a> community, 
+    a growing group of university chapters working on building their open-source and affordable fabs. Our organization is open to all students, regardless of major or
+    level of experience. We welcome anyone who's curious about semiconductors and wants to contribute to our efforts!</p>
+    <h2>WHAT DO WE DO?</h2>
+    <p class="about-intro">At CWRU CHIPS, we have weekly general body meetings where we discuss our plans and work on various projects.
+    We have lecture presentations about semiconductor topics and tours of different fabrication facilities on campus. 
+    We also actively collaborate with other groups at different universities in the Hacker Fab community. As of now, we've finished our lithostepper and we're currently
+    working on building a magnetron sputtering system and designing a RISC-V microprocessor which we will submit to Tiny Tapeout and have it manufactured on a real chip.
+    </p>
 
-    <p class="about-intro">CWRU CHIPS is a student club where we build fabrication equipment and design semiconductor chips. We're the Case Western chapter of the <a href="https://hackerfab.org" target="_blank" style="color:#3a78c9;">Hacker Fab</a> community, a growing group of university chapters all trying to build homemade fabs. Our long-term goal is to fabricate a MOSFET transistor with equipment built by CWRU students.</p>
-
-    <div class="pillars">
-      <div class="pillar">
-        <div class="pillar-title">Training and Workshops</div>
-        <p>We run lectures on lithography, thin-film processing, chip design, and semiconductor basics. Before using the equipment, members complete the required safety training. No prior experience necessary.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-title">Project-Based Learning</div>
-        <p>We build our own equipment and design our own chips. On the fab side, we build equipment like UV steppers and spin coaters ourselves. On the chip side, we design our own semiconductors to be submitted to Tiny Tapeout.</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-title">Community</div>
-        <p>Students from all disciplines can participate: we have students from MSE, ECE, physics, mechanical engineering, and computer science all involved. We host guest speakers from industry, and we're a chapter of the larger Hacker Fab community. Come to a meeting, join the Discord, or email us to get involved.</p>
-      </div>
-    </div>
-
-    <div class="about-links">
-      <a href="https://hackerfab.org" target="_blank" class="about-link-item">
-        <div>
-          Hacker Fab
-          <span class="sub">hackerfab.org & documentation</span>
-        </div>
-        <span class="arr">→</span>
-      </a>
-      <a href="https://tinytapeout.com" target="_blank" class="about-link-item">
-        <div>
-          Tiny Tapeout
-          <span class="sub">tinytapeout.com, a chip tapeout cooperative</span>
-        </div>
-        <span class="arr">→</span>
-      </a>
-      <a href="/cdn-cgi/l/email-protection#9ffcf7f6efecdffcfeecfab1fafbea" class="about-link-item">
-        <div>
-          Get in Touch
-          <span class="sub"><span class="__cf_email__" data-cfemail="eb8883829b98ab888a988ec58e8f9e">[email&#160;protected]</span></span>
-        </div>
-        <span class="arr">→</span>
-      </a>
-    </div>
+    <h2>COME JOIN US!</h2>
+    <p class="about-intro">
+    If you want to get involved, feel free to drop by any of our meetings or reach out to us on Discord? This is our weekly schedule for the semester (Spring 2026):
+    <br><br>
+      General Body Meetings: Monday at 6 PM in White 616
+    <br>
+      Magnetron Sputter Team: Monday at 7 PM in White 616
+    <br>
+      Executive Team Meetings: Thursday at 7 PM on Discord
+    </p>
   </div>
 </section>
 
@@ -1280,3 +1243,4 @@
 
 </body>
 </html>
+
