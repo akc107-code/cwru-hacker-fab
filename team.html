@@ -1,17 +1,935 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CWRU CHIPS — Team</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CWRU CHIPS — Hacker Fab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
 
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    /* ── Base ── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-<style>
-/* COPY YOUR FULL STYLE BLOCK FROM index.html HERE */
-</style>
+    body {
+      background: #f5f5f5;
+      color: #333333;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; }
+
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: #222222;
+      letter-spacing: 0.03em;
+      line-height: 1;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #111111;
+      margin-bottom: 6px;
+    }
+
+    p { margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid #dddddd;
+    }
+
+    .label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #ffffff;
+      border-bottom: 1px solid #dddddd;
+    }
+
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-badge {
+      background: #003087;
+      color: #fff;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+    }
+
+    .nav-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.05em;
+      color: #333333;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #666666;
+    }
+
+    .nav-links a:hover { color: #333333; }
+
+    .nav-join {
+      background: #003087;
+      color: #fff !important;
+      padding: 6px 14px;
+    }
+
+    .nav-join:hover { background: #0040a8; }
+
+    /* ── Hero ── */
+    #hero {
+      padding: 0;
+      border-bottom: 1px solid #dddddd;
+    }
+
+    .slideshow {
+      width: 100%;
+      height: 420px;
+      background: #e8e8e8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: none;
+    }
+
+    .slide.active { display: block; }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.75;
+    }
+
+    .slide-ph {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #d0d0d0;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #666666;
+    }
+
+    .slide-controls {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .slide-btn {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #cccccc;
+      color: #666666;
+      cursor: pointer;
+      width: 28px;
+      height: 28px;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-btn:hover { color: #333333; }
+
+    .slide-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #777777;
+      letter-spacing: 0.06em;
+      background: rgba(255,255,255,0.7);
+      padding: 4px 7px;
+    }
+
+    .hero-body {
+      padding: 36px 0 44px;
+    }
+
+    .hero-tagline {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #3a78c9;
+      margin-bottom: 12px;
+    }
+
+    .hero-body h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      color: #222222;
+      line-height: 0.93;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+
+    .hero-body h1 span { color: #3a78c9; }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: #666666;
+      font-weight: 300;
+      max-width: 500px;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      display: inline-block;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn-blue {
+      background: #003087;
+      color: #fff;
+      border-color: #003087;
+    }
+
+    .btn-blue:hover { background: #0040a8; border-color: #0040a8; }
+
+    .btn-outline {
+      background: transparent;
+      color: #666666;
+      border-color: #cccccc;
+    }
+
+    .btn-outline:hover { color: #333333; border-color: #999999; }
+
+    .btn-discord {
+      background: #5865f2;
+      color: #fff;
+      border-color: #5865f2;
+    }
+
+    .btn-discord:hover { background: #4752c4; border-color: #4752c4; }
+
+    /* ── About ── */
+    #about { background: #f9f9f9; }
+
+    .about-intro {
+      font-size: 1rem;
+      color: #555555;
+      font-weight: 300;
+      max-width: 620px;
+      margin-bottom: 36px;
+      line-height: 1.8;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #cccccc;
+      border: 1px solid #cccccc;
+      margin-bottom: 28px;
+    }
+
+    .pillar {
+      background: #ffffff;
+      padding: 22px 20px;
+    }
+
+    .pillar-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #3a78c9;
+      margin-bottom: 8px;
+    }
+
+    .pillar p {
+      font-size: 0.87rem;
+      color: #666666;
+      font-weight: 300;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .about-links {
+      display: flex;
+      gap: 1px;
+      background: #cccccc;
+      border: 1px solid #cccccc;
+    }
+
+    .about-link-item {
+      flex: 1;
+      background: #ffffff;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #555555;
+    }
+
+    .about-link-item:hover { background: #f0f0f0; color: #333333; }
+
+    .about-link-item .sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #888888;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .about-link-item .arr { color: #cccccc; }
+    .about-link-item:hover .arr { color: #666666; }
+
+    /* ── Projects ── */
+    #projects { background: #f5f5f5; }
+
+    .projects-intro {
+      font-size: 0.9rem; color: #666666; font-weight: 300;
+      margin-bottom: 24px; max-width: 520px;
+    }
+
+    .proj-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: #cccccc; border: 1px solid #cccccc;
+    }
+
+    .proj-block {
+      background: #ffffff; cursor: pointer;
+      display: flex; flex-direction: column; transition: background 0.18s;
+    }
+    .proj-block:hover { background: #f5f5f5; }
+
+    .proj-block-img {
+      width: 100%; height: 180px; background: #e8e8e8;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem; flex-shrink: 0; overflow: hidden;
+    }
+    .proj-block-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    .proj-block-body { padding: 22px 20px; display: flex; flex-direction: column; flex: 1; }
+
+    .proj-block-tag {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #888888; margin-bottom: 8px;
+    }
+    .proj-block.chip .proj-block-tag    { color: #6a9a4a; }
+    .proj-block.current .proj-block-tag { color: #3a78c9; }
+
+    .proj-block-name {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem;
+      letter-spacing: 0.03em; color: #222222; line-height: 1.05; margin-bottom: 10px;
+    }
+
+    .proj-block-desc {
+      font-size: 0.85rem; color: #666666; font-weight: 300;
+      line-height: 1.65; flex: 1; margin-bottom: 16px;
+    }
+
+    .proj-block-foot {
+      display: flex; align-items: center; gap: 7px;
+      padding-top: 12px; border-top: 1px solid #eeeeee;
+    }
+
+    .proj-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .chip-dot  { background: #6a9a4a; }
+    .blue-dot  { background: #1D9E75; }
+    .amber-dot { background: #b07030; }
+    .gray-dot  { background: #444; }
+
+    .proj-status-txt {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      letter-spacing: 0.08em; text-transform: uppercase; flex: 1;
+    }
+    .chip-txt  { color: #6a9a4a; }
+    .blue-txt  { color: #1D9E75; }
+    .amber-txt { color: #b07030; }
+    .gray-txt  { color: #555; }
+
+    .proj-open {
+      font-family: 'DM Mono', monospace; font-size: 0.6rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: #cccccc; opacity: 0; transition: opacity 0.18s;
+    }
+    .proj-block:hover .proj-open { opacity: 1; color: #666666; }
+
+    /* ── Support ── */
+    #support { background: #f5f5f5; }
+
+    .sup-intro {
+      font-size: 0.93rem; color: #666666; font-weight: 300;
+      line-height: 1.8; max-width: 620px; margin-bottom: 32px;
+    }
+
+    .sup-cards {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: #cccccc; border: 1px solid #cccccc; margin-bottom: 16px;
+    }
+
+    .sup-card {
+      background: #ffffff; padding: 28px 24px;
+      display: flex; flex-direction: column; gap: 8px;
+      text-decoration: none; color: inherit; transition: background 0.18s;
+    }
+    .sup-card:hover { background: #f5f5f5; }
+
+    .sup-card-primary { background: #003087; }
+    .sup-card-primary:hover { background: #0040a8; }
+
+    .sup-card-icon { font-size: 1.1rem; color: #888888; margin-bottom: 4px; line-height: 1; }
+    .sup-card-primary .sup-card-icon { color: rgba(255,255,255,0.4); }
+
+    .sup-card-title {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
+      letter-spacing: 0.03em; color: #222222; line-height: 1;
+    }
+    .sup-card-primary .sup-card-title { color: #fff; }
+
+    .sup-card-desc { font-size: 0.83rem; color: #666666; font-weight: 300; line-height: 1.7; flex: 1; }
+    .sup-card-primary .sup-card-desc { color: rgba(255,255,255,0.55); }
+
+    .sup-card-cta {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #777777; margin-top: 8px;
+    }
+    .sup-card-primary .sup-card-cta { color: rgba(255,255,255,0.5); }
+    .sup-card:hover .sup-card-cta { color: #333333; }
+    .sup-card-primary:hover .sup-card-cta { color: rgba(255,255,255,0.8); }
+
+    .sup-note {
+      font-size: 0.82rem; color: #666666; font-weight: 300; font-style: italic;
+      padding: 12px 16px; background: #e8e8e8; border: 1px solid #cccccc;
+    }
+
+    @media (max-width: 680px) {
+      .proj-grid { grid-template-columns: 1fr; }
+      .sup-cards { grid-template-columns: 1fr; }
+    }
+    .modal-bg {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 100;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal-bg.open { display: flex; align-items: center; justify-content: center; }
+
+    .modal {
+      background: #ffffff;
+      border: 1px solid #cccccc;
+      width: 100%;
+      max-width: 640px;
+      margin: auto;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .modal-top-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888888;
+    }
+
+    .modal-x {
+      background: transparent;
+      border: 1px solid #cccccc;
+      color: #999999;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-x:hover { color: #333333; border-color: #999999; }
+
+    .modal-gallery {
+      height: 240px;
+      background: #f5f5f5;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .g-track {
+      display: flex;
+      height: 100%;
+      transition: transform 0.25s ease;
+    }
+
+    .g-slide {
+      flex: 0 0 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f5f5;
+      overflow: hidden;
+    }
+
+    .g-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .g-ph {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #666666;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .g-ph-icon { font-size: 1.8rem; margin-bottom: 8px; opacity: 0.2; }
+
+    .g-nav {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .g-btn {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid #cccccc;
+      color: #666666;
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .g-btn:hover { color: #333333; }
+
+    .g-count {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      color: #777777;
+      letter-spacing: 0.05em;
+    }
+
+    .g-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 4px;
+    }
+
+    .gdot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #2a2a2a;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .gdot.on { background: #666; }
+
+    .modal-body { padding: 22px 22px 28px; }
+
+    .modal-body h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: #222222;
+      letter-spacing: 0.03em;
+      line-height: 1;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    .modal-body .desc {
+      font-size: 0.88rem;
+      color: #666666;
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .modal-why {
+      background: #f0f0f0;
+      border-left: 2px solid #003087;
+      padding: 13px 16px;
+      margin-bottom: 14px;
+    }
+
+    .modal-why-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #3a78c9;
+      margin-bottom: 6px;
+    }
+
+    .modal-why p {
+      font-size: 0.85rem;
+      color: #666666;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    .modal-join {
+      background: #f0f0f0;
+      border-left: 2px solid #6a9a4a;
+      padding: 13px 16px;
+      margin-bottom: 14px;
+    }
+
+    .modal-join-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #6a9a4a;
+      margin-bottom: 6px;
+    }
+
+    .modal-join p { font-size: 0.85rem; color: #666666; font-weight: 300; margin: 0; }
+
+    .modal-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid #eeeeee;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      color: #888888;
+      letter-spacing: 0.05em;
+    }
+
+    .modal-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #333;
+      flex-shrink: 0;
+    }
+
+    .dot.blue  { background: #3a78c9; }
+    .dot.green { background: #6a9a4a; }
+    .dot.amber { background: #b07030; }
+
+    /* ── Team ── */
+    #team { background: #f9f9f9; }
+
+    /* Executive row */
+    .team-exec {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: #cccccc;
+      border: 1px solid #cccccc;
+      margin-top: 20px;
+      margin-bottom: 1px;
+    }
+
+    /* Admin row */
+    .team-admin {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: #cccccc;
+      border: 1px solid #cccccc;
+      border-top: none;
+      margin-bottom: 1px;
+    }
+
+    /* Advisors row */
+    .team-advisors {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: #cccccc;
+      border: 1px solid #cccccc;
+      border-top: none;
+    }
+
+    .team-section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888888;
+      padding: 8px 18px;
+      background: #e8e8e8;
+      border: 1px solid #cccccc;
+      border-bottom: none;
+      margin-top: 20px;
+    }
+
+    .team-section-label:first-of-type { margin-top: 20px; }
+
+    .member {
+      background: #ffffff;
+      padding: 18px;
+    }
+
+    .member-av {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #003087;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      flex-shrink: 0;
+    }
+
+    .member.adv .member-av {
+      background: #f5f5f5;
+      border: 1px solid #cccccc;
+      color: #888888;
+    }
+
+    .member-name {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #333333;
+      margin-bottom: 2px;
+    }
+
+    .member-role {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #3a78c9;
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+
+    .member.adv .member-role { color: #777777; }
+
+    .member-dept {
+      font-size: 0.75rem;
+      color: #888888;
+      font-weight: 300;
+    }
+
+    .member.vacant .member-av {
+      background: #f0f0f0;
+      border: 1px dashed #cccccc;
+      color: #999999;
+    }
+
+    .member.vacant .member-name { color: #999999; font-style: italic; }
+    .member.vacant .member-role { color: #cccccc; }
+
+    .join-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px;
+      background: #ffffff;
+      border: 1px solid #cccccc;
+      border-top: none;
+    }
+
+    .join-cta p {
+      font-size: 0.86rem;
+      color: #666666;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    .join-cta-btns {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #e8e8e8;
+      border-top: 1px solid #cccccc;
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .footer-brand .name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      color: #333333;
+      font-weight: 400;
+    }
+
+    .footer-brand .school {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #666666;
+      margin-top: 2px;
+    }
+
+    .footer-nav {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+    }
+
+    .footer-nav a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #666666;
+    }
+
+    .footer-nav a:hover { color: #333333; }
+
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem;
+      color: #666666;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 760px) {
+      .nav-links li:not(:last-child) { display: none; }
+      .pillars { grid-template-columns: 1fr; }
+      .about-links { flex-direction: column; }
+      .project-row { grid-template-columns: 100px 1fr auto; }
+      .proj-grid { grid-template-columns: 1fr 1fr; }
+      .team-exec { grid-template-columns: 1fr 1fr; }
+      .team-admin { grid-template-columns: 1fr 1fr; }
+      .team-advisors { grid-template-columns: 1fr 1fr; }
+      .support-cols { grid-template-columns: 1fr; }
+      .support-links { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .footer-nav { flex-wrap: wrap; }
+      .join-cta { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .team-admin { grid-template-columns: 1fr 1fr; }
+      .project-row { grid-template-columns: 80px 1fr auto; }
+    }
+
+  </style>
 </head>
-
 <body>
 
 <!-- NAV -->
@@ -31,17 +949,21 @@
   </div>
 </nav>
 
-<!-- HEADER -->
-<section style="padding: 50px 0; border-bottom: 1px solid #ddd;">
+
+<section style="padding: 56px 0; border-bottom: 1px solid #dddddd; background: #f5f5f5;">
   <div class="wrap">
     <div class="label">Team</div>
     <h2>Meet the Fab</h2>
+    <p class="projects-intro">Leadership, administrative team, and faculty advisors.</p>
   </div>
 </section>
 
-<!-- TEAM SECTION (PASTED FROM ORIGINAL) -->
+
+<!-- TEAM -->
 <section id="team">
   <div class="wrap">
+    <div class="label">Team</div>
+    <h2>Meet the Fab</h2>
 
     <!-- Executive -->
     <div class="team-section-label">Executive Leadership</div>
@@ -50,43 +972,48 @@
         <div class="member-av">AC</div>
         <div class="member-name">Andrew Csanady</div>
         <div class="member-role">President</div>
-        <div class="member-dept">Materials Science & Engineering</div>
+        <div class="member-dept">Materials Science &amp; Engineering</div>
       </div>
       <div class="member">
         <div class="member-av">PV</div>
         <div class="member-name">Pieter Verbeek</div>
-        <div class="member-role">Vice President</div>
+        <div class="member-role">Vice President &amp; Director of Operations</div>
         <div class="member-dept">Electrical Engineering</div>
       </div>
     </div>
 
-    <!-- Admin -->
+    <!-- Administrative -->
     <div class="team-section-label">Administrative Leadership</div>
     <div class="team-admin">
       <div class="member">
         <div class="member-av">PC</div>
         <div class="member-name">Patrick Cadigan</div>
-        <div class="member-role">Finance</div>
+        <div class="member-role">Director of Finance</div>
+        <div class="member-dept">Budgets, grants &amp; funding</div>
       </div>
       <div class="member">
         <div class="member-av">NC</div>
         <div class="member-name">Nathan Camporeale</div>
-        <div class="member-role">Safety</div>
+        <div class="member-role">Director of Risk &amp; Safety</div>
+        <div class="member-dept">Safety training &amp; compliance</div>
       </div>
       <div class="member">
         <div class="member-av">JP</div>
         <div class="member-name">JP Magbitang</div>
-        <div class="member-role">Programming</div>
+        <div class="member-role">Director of Programming</div>
+        <div class="member-dept">Events, workshops &amp; demos</div>
       </div>
       <div class="member">
         <div class="member-av">NS</div>
         <div class="member-name">Noah Saito</div>
-        <div class="member-role">Communications</div>
+        <div class="member-role">Director of Communications</div>
+        <div class="member-dept">Outreach, social &amp; website</div>
       </div>
       <div class="member">
         <div class="member-av">KH</div>
         <div class="member-name">Kevin Harris</div>
-        <div class="member-role">Technology</div>
+        <div class="member-role">Director of Technology &amp; Chief Engineer</div>
+        <div class="member-dept">Technical projects &amp; roadmap</div>
       </div>
     </div>
 
@@ -96,13 +1023,24 @@
       <div class="member adv">
         <div class="member-av">AL</div>
         <div class="member-name">Andrew Lininger</div>
+        <div class="member-role">Faculty Advisor</div>
+        <div class="member-dept">Case School of Engineering</div>
       </div>
       <div class="member adv">
         <div class="member-av">IM</div>
         <div class="member-name">Ina Martin</div>
+        <div class="member-role">Faculty Advisor</div>
+        <div class="member-dept">Case School of Engineering</div>
       </div>
     </div>
 
+    <div class="join-cta">
+      <p>People of all majors accepted, no experience required.</p>
+      <div class="join-cta-btns">
+        <a href="https://discord.com/invite/68jVuvCdPY" target="_blank" class="btn btn-discord">Discord</a>
+        <a href="/cdn-cgi/l/email-protection#bcdfd4d5cccffcdfddcfd992d9d8c9" class="btn btn-blue">Email Us</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -111,13 +1049,17 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="name">CWRU CHIPS — Hacker Fab</div>
+      <div class="school">Case Western Reserve University · Cleveland, OH · Est. 2025</div>
     </div>
     <ul class="footer-nav">
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#projects">Projects</a></li>
       <li><a href="team.html">Team</a></li>
       <li><a href="index.html#support">Support</a></li>
+      <li><a href="https://hackerfab.org" target="_blank">Hacker Fab</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#96f5feffe6e5d6f5f7e5f3b8f3f2e3">Contact</a></li>
     </ul>
+    <div class="footer-copy">© 2025 CWRU CHIPS</div>
   </div>
 </footer>
 
