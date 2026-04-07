@@ -928,26 +928,73 @@
       .project-row { grid-template-columns: 80px 1fr auto; }
     }
 
+  
+    /* ── Multi-page SPA Enhancements ── */
+    .nav-links a.active,
+    .footer-nav a.active {
+      color: #003087;
+    }
+
+    .nav-links a.active:not(.nav-join) {
+      position: relative;
+    }
+
+    .nav-links a.active:not(.nav-join)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -18px;
+      height: 2px;
+      background: #003087;
+    }
+
+    .page-shell {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.28s ease, transform 0.28s ease;
+    }
+
+    .page-shell.is-changing {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    .page-intro {
+      padding: 56px 0;
+      border-bottom: 1px solid #dddddd;
+      background: #f5f5f5;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .page-shell {
+        transition: none;
+      }
+    }
+
   </style>
 </head>
-<body>
-
+<body data-page="index">
 <!-- NAV -->
+
 <nav>
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo">
+    <a href="index.html#hero" class="nav-logo" data-spa>
       <div class="nav-badge">CWRU</div>
       <div class="nav-name">CHIPS — Hacker Fab</div>
     </a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="#support">Support</a></li>
+      <li><a href="index.html#about" data-page-link="index" data-spa>About</a></li>
+      <li><a href="projects.html" data-page-link="projects" data-spa>Projects</a></li>
+      <li><a href="team.html" data-page-link="team" data-spa>Team</a></li>
+      <li><a href="support.html" data-page-link="support" data-spa>Support</a></li>
       <li><a href="https://community.case.edu/chips/club_signup" class="nav-join">Join Us</a></li>
     </ul>
   </div>
 </nav>
+
+<div id="page-shell" class="page-shell">
 
 <!-- HERO -->
 <section id="hero">
@@ -1030,121 +1077,9 @@
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="wrap">
-    <div class="label">Projects</div>
-    <h2>What We're Working On</h2>
-    <p class="projects-intro">Click any project to learn more.</p>
-
-    <div class="proj-grid">
-
-      <div class="proj-block chip" onclick="openModal('tinytapeout')">
-        <div class="proj-block-img">🔲</div>
-        <div class="proj-block-body">
-          <div class="proj-block-tag">Chip Design · Active</div>
-          <div class="proj-block-name">Tiny Tapeout</div>
-          <div class="proj-block-desc">Every semester, we design chips and submit them to Tiny Tapeout, a program that lets students submit designs to be fabricated. We run workshops so anyone can learn the design tools required to participate.</div>
-          <div class="proj-block-foot">
-            <span class="proj-dot chip-dot"></span>
-            <span class="proj-status-txt chip-txt">Active this semester</span>
-            <span class="proj-open">Details →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="proj-block current" onclick="openModal('stepper')">
-        <div class="proj-block-img">🔬</div>
-        <div class="proj-block-body">
-          <div class="proj-block-tag">Nanofab · Complete</div>
-          <div class="proj-block-name">UV Lithography Stepper</div>
-          <div class="proj-block-desc">We built a UV stepper that can pattern at a 2 micron resolution, smaller than a human hair. With financial support from Think[box], we built it based on CMU's open-source design.</div>
-          <div class="proj-block-foot">
-            <span class="proj-dot blue-dot"></span>
-            <span class="proj-status-txt blue-txt">Complete · $2,500 funded</span>
-            <span class="proj-open">Details →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="proj-block current" onclick="openModal('spincoater')">
-        <div class="proj-block-img">⚙️</div>
-        <div class="proj-block-body">
-          <div class="proj-block-tag">Nanofab · Active</div>
-          <div class="proj-block-name">Vacuum Spin Coater</div>
-          <div class="proj-block-desc">Currently building a vacuum spin coater to coat wafers with photoresist before UV exposure. This is the very first step in photolithography.</div>
-          <div class="proj-block-foot">
-            <span class="proj-dot amber-dot"></span>
-            <span class="proj-status-txt amber-txt">Under construction</span>
-            <span class="proj-open">Details →</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="proj-block current" onclick="openModal('sputtering')">
-        <div class="proj-block-img">⚡</div>
-        <div class="proj-block-body">
-          <div class="proj-block-tag">Nanofab · Planning</div>
-          <div class="proj-block-name">RF Sputtering System</div>
-          <div class="proj-block-desc">Our next major project, an RF sputtering chamber that lets us deposit gate oxide and dielectric layers. Essential to make a transistor.</div>
-          <div class="proj-block-foot">
-            <span class="proj-dot blue-dot"></span>
-            <span class="proj-status-txt blue-txt">Planning</span>
-            <span class="proj-open">Details →</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- SUPPORT -->
-<section id="support">
-  <div class="wrap">
-    <div class="label">Support Us</div>
-    <h2>Help Us Keep Building</h2>
-
-    <p class="sup-intro">Donations go directly toward student projects and equipment. If you'd like to support us, here are a few ways to help.</p>
-
-    <div class="sup-cards">
-
-      <a href="https://gofund.me/01803a747" target="_blank" class="sup-card sup-card-primary">
-        <div class="sup-card-icon">$</div>
-        <div class="sup-card-title">Donate via GoFundMe</div>
-        <div class="sup-card-desc">Helps us buy chemicals, wafers, parts, and tools for club projects.</div>
-        <div class="sup-card-cta">Give Now →</div>
-      </a>
-
-      <a href="https://forms.gle/TjWxpyG97UwTHY8z8" target="_blank" class="sup-card">
-        <div class="sup-card-icon">⬡</div>
-        <div class="sup-card-title">Partner or Sponsor</div>
-        <div class="sup-card-desc">If your company wants to support a build or fund a specific project, fill out our form and we'll get in touch.</div>
-        <div class="sup-card-cta">Partnership Form →</div>
-      </a>
-
-      <a href="https://forms.gle/MZYukGujLYx9HQko6" target="_blank" class="sup-card">
-        <div class="sup-card-icon">✦</div>
-        <div class="sup-card-title">Alumni Involvement</div>
-        <div class="sup-card-desc">We'd love to have alumni come speak with members, or just stay connected with the club.</div>
-        <div class="sup-card-cta">Get Involved →</div>
-      </a>
-
-      <a href="https://docs.hackerfab.org" target="_blank" class="sup-card">
-        <div class="sup-card-icon">≡</div>
-        <div class="sup-card-title">Open-Source Docs</div>
-        <div class="sup-card-desc">We document our work publicly through Hacker Fab, including schematics, parts lists, and build notes.</div>
-        <div class="sup-card-cta">View Docs →</div>
-      </a>
-
-    </div>
-
-    <div class="sup-note">Got surplus lab equipment? Microscopes, vacuum hardware, evaporators, or other tools could make a big difference for us. Email us at <a href="mailto:chips@case.edu" style="color:#3a78c9;">chips@case.edu</a></div>
-
-  </div>
-</section>
-
+</div>
 <!-- FOOTER -->
+
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
@@ -1152,10 +1087,10 @@
       <div class="school">Case Western Reserve University · Cleveland, OH · Est. 2025</div>
     </div>
     <ul class="footer-nav">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="#support">Support</a></li>
+      <li><a href="index.html#about" data-page-link="index" data-spa>About</a></li>
+      <li><a href="projects.html" data-page-link="projects" data-spa>Projects</a></li>
+      <li><a href="team.html" data-page-link="team" data-spa>Team</a></li>
+      <li><a href="support.html" data-page-link="support" data-spa>Support</a></li>
       <li><a href="https://hackerfab.org" target="_blank">Hacker Fab</a></li>
       <li><a href="/cdn-cgi/l/email-protection#96f5feffe6e5d6f5f7e5f3b8f3f2e3">Contact</a></li>
     </ul>
@@ -1163,317 +1098,185 @@
   </div>
 </footer>
 
-<!-- ── MODALS ── -->
-<!-- To add gallery photos: replace <div class="g-ph">...</div> with <img src="images/x.jpg" alt="..."> inside each .g-slide -->
 
-<div class="modal-bg" id="modal-tinytapeout" onclick="closeOut(event,'tinytapeout')">
-  <div class="modal">
-    <div class="modal-top">
-      <div class="modal-top-label">Chip Design · Active</div>
-      <button class="modal-x" onclick="closeModal('tinytapeout')">✕</button>
-    </div>
-    <div class="modal-gallery">
-      <div class="g-track" id="gt-tinytapeout">
-        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: chip design session or schematic</div></div>
-        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: the returned Tiny Tapeout chip / PCB</div></div>
-        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: testing the chip on a development board</div></div>
-      </div>
-      <div class="g-nav">
-        <button class="g-btn" onclick="gNav('tinytapeout',-1)">‹</button>
-        <div class="g-count" id="gc-tinytapeout">1 / 3</div>
-        <button class="g-btn" onclick="gNav('tinytapeout',1)">›</button>
-      </div>
-      <div class="g-dots" id="gd-tinytapeout">
-        <button class="gdot on" onclick="gGo('tinytapeout',0)"></button>
-        <button class="gdot" onclick="gGo('tinytapeout',1)"></button>
-        <button class="gdot" onclick="gGo('tinytapeout',2)"></button>
-      </div>
-    </div>
-    <div class="modal-body">
-      <h3>Tiny Tapeout</h3>
-      <p class="desc">Every semester, we design chips and submit them to Tiny Tapeout, a program that lets students submit designs to be fabricated. We run workshops so anyone can learn the design tools required to participate. When the chips come back, we test them on a development board.</p>
-      <div class="modal-why">
-        <div class="modal-why-label">What You'll Do</div>
-        <p>You'll learn digital or analog chip design using EDA tools like KiCad, OpenLane, and Xschem. You'll contribute to a design, review it with the team, and submit it for fabrication on a 130nm process. When the chip arrives, you help test it. This happens once a semester.</p>
-      </div>
-      <div class="modal-join">
-        <div class="modal-join-label">How to Join This Project</div>
-        <p>No chip design experience is needed; we run workshops at the start of each semester. If you want to participate in the chip design, email us or join the Discord.</p>
-      </div>
-      <div class="modal-foot">
-        <div class="modal-status"><div class="dot green"></div> Active this semester</div>
-        <div>Skywater 130nm · <a href="https://tinytapeout.com" target="_blank" style="color:#3a78c9;">tinytapeout.com</a></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal-bg" id="modal-stepper" onclick="closeOut(event,'stepper')">
-  <div class="modal">
-    <div class="modal-top">
-      <div class="modal-top-label">Nanofab · Active</div>
-      <button class="modal-x" onclick="closeModal('stepper')">✕</button>
-    </div>
-    <div class="modal-gallery">
-      <div class="g-track" id="gt-stepper">
-        <div class="g-slide"><div class="g-ph"><img src="stepperInProgress.jpg" alt="Stepper in progress"></div></div>
-        <div class="g-slide"><div class="g-ph"><img src="lensAssembly.jpg" alt="Lens assembly"></div></div>
-        <div class="g-slide"><div class="g-ph"><img src="patternedWafer.jpg" alt="Patterned wafer"></div></div>
-      </div>
-      <div class="g-nav">
-        <button class="g-btn" onclick="gNav('stepper',-1)">‹</button>
-        <div class="g-count" id="gc-stepper">1 / 3</div>
-        <button class="g-btn" onclick="gNav('stepper',1)">›</button>
-      </div>
-      <div class="g-dots" id="gd-stepper">
-        <button class="gdot on" onclick="gGo('stepper',0)"></button>
-        <button class="gdot" onclick="gGo('stepper',1)"></button>
-        <button class="gdot" onclick="gGo('stepper',2)"></button>
-      </div>
-    </div>
-    <div class="modal-body">
-      <h3>UV Lithography Stepper</h3>
-      <p class="desc">We're building a UV lithography stepper based on Carnegie Mellon's design. It uses a repurposed projector lens and a UV LED to expose photoresist through a chrome mask at roughly 2 micron resolution. Think[box] supported this build with $2,500 of funding.</p>
-      <div class="modal-why">
-        <div class="modal-why-label">Why We're Building This</div>
-        <p>Lithography is one of the core steps of semiconductor manufacturing. If you want to pattern features on a wafer, we need a reliable way to do it. This tool is an important part of the fabrication process.</p>
-      </div>
-      <div class="modal-join">
-        <div class="modal-join-label">How to Get Involved</div>
-        <p>We're looking for help with mechanical assembly, optical alignment, software, and process testing. No prior experience required; come to a build session and we'll help you get started.</p>
-      </div>
-      <div class="modal-foot">
-        <div class="modal-status"><div class="dot blue"></div> Actively building</div>
-        <div>$2,500 funded via Think[box] · <a href="https://hackerfab.org" target="_blank" style="color:#3a78c9;">hackerfab.org</a></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal-bg" id="modal-spincoater" onclick="closeOut(event,'spincoater')">
-  <div class="modal">
-    <div class="modal-top">
-      <div class="modal-top-label">Nanofab · Active</div>
-      <button class="modal-x" onclick="closeModal('spincoater')">✕</button>
-    </div>
-    <div class="modal-gallery">
-      <div class="g-track" id="gt-spincoater">
-        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: spin coater build</div></div>
-        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: coated wafer</div></div>
-      </div>
-      <div class="g-nav">
-        <button class="g-btn" onclick="gNav('spincoater',-1)">‹</button>
-        <div class="g-count" id="gc-spincoater">1 / 2</div>
-        <button class="g-btn" onclick="gNav('spincoater',1)">›</button>
-      </div>
-      <div class="g-dots" id="gd-spincoater">
-        <button class="gdot on" onclick="gGo('spincoater',0)"></button>
-        <button class="gdot" onclick="gGo('spincoater',1)"></button>
-      </div>
-    </div>
-    <div class="modal-body">
-      <h3>Vacuum Spin Coater</h3>
-      <p class="desc">We're building a vacuum spin coater that uses a brushless motor and vacuum chuck to spin wafers at controlled speeds, creating a thin, even layer of photoresist before UV exposure.</p>
-      <div class="modal-why">
-        <div class="modal-why-label">Why We're Building This</div>
-        <p>Before a wafer can be exposed, it needs a uniform coating of photoresist, as an uneven layer ruins the exposure and makes it difficult to pattern. This is another of the core fabrication tools needed.</p>
-      </div>
-      <div class="modal-join">
-        <div class="modal-join-label">How to Get Involved</div>
-        <p>We're looking for help with mechanical design, motor electronics, and firmware. It's a well-scoped project, a good place for beginners to join in.</p>
-      </div>
-      <div class="modal-foot">
-        <div class="modal-status"><div class="dot blue"></div> Under construction</div>
-        <div>Build cost: ~$200 (DIY)</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal-bg" id="modal-plating" onclick="closeOut(event,'plating')">
-  <div class="modal">
-    <div class="modal-top">
-      <div class="modal-top-label">Nanofab · Planned</div>
-      <button class="modal-x" onclick="closeModal('plating')">✕</button>
-    </div>
-    <div class="modal-gallery">
-      <div class="g-track" id="gt-plating">
-        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: plating bath setup</div></div>
-        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: metal-patterned sample</div></div>
-      </div>
-      <div class="g-nav">
-        <button class="g-btn" onclick="gNav('plating',-1)">‹</button>
-        <div class="g-count" id="gc-plating">1 / 2</div>
-        <button class="g-btn" onclick="gNav('plating',1)">›</button>
-      </div>
-      <div class="g-dots" id="gd-plating">
-        <button class="gdot on" onclick="gGo('plating',0)"></button>
-        <button class="gdot" onclick="gGo('plating',1)"></button>
-      </div>
-    </div>
-    <div class="modal-body">
-      <h3>Electroless Metal Plating</h3>
-      <p class="desc">We're planning a wet chemistry station for depositing thin metal films on patterned surfaces through an autocatalytic reaction, without a vacuum or high voltages.</p>
-      <div class="modal-why">
-        <div class="modal-why-label">Why We're Building This</div>
-        <p>Metal contacts are a basic part of nearly every semiconductor device. Electroless plating lets us add metal to patterned wafers cheaply, while also giving members experience with surface chemistry and metallization.</p>
-      </div>
-      <div class="modal-join">
-        <div class="modal-join-label">How to Get Involved</div>
-        <p>This project is still being planned. If you're interested in chemistry, surface science, or materials processing, reach out via email or in person.</p>
-      </div>
-      <div class="modal-foot">
-        <div class="modal-status"><div class="dot amber"></div> Planning phase</div>
-        <div>Estimated build: ~$500</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal-bg" id="modal-evaporator" onclick="closeOut(event,'evaporator')">
-  <div class="modal">
-    <div class="modal-top">
-      <div class="modal-top-label">Nanofab · Future</div>
-      <button class="modal-x" onclick="closeModal('evaporator')">✕</button>
-    </div>
-    <div class="modal-gallery">
-      <div class="g-track" id="gt-evaporator">
-        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: evaporator chamber</div></div>
-        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: deposited metal film result</div></div>
-      </div>
-      <div class="g-nav">
-        <button class="g-btn" onclick="gNav('evaporator',-1)">‹</button>
-        <div class="g-count" id="gc-evaporator">1 / 2</div>
-        <button class="g-btn" onclick="gNav('evaporator',1)">›</button>
-      </div>
-      <div class="g-dots" id="gd-evaporator">
-        <button class="gdot on" onclick="gGo('evaporator',0)"></button>
-        <button class="gdot" onclick="gGo('evaporator',1)"></button>
-      </div>
-    </div>
-    <div class="modal-body">
-      <h3>Thermal Evaporator</h3>
-      <p class="desc">One of our longer-term goals is to build a thermal evaporator: a vacuum chamber that heats metal until it evaporates and deposits a thin film on the wafer. We'd use it for making aluminum and gold contacts on fabricated devices.</p>
-      <div class="modal-why">
-        <div class="modal-why-label">Why We're Building This</div>
-        <p>Clean metal contacts are essential for making chips that work. Thermal evaporation is a common way to produce better films than wet plating, and is the standard approach in research fabs. Building this would allow us to proceed to more advanced fabrication work.</p>
-      </div>
-      <div class="modal-join">
-        <div class="modal-join-label">How to Get Involved</div>
-        <p>This is still a future project, so getting involved now means helping with research, planning, and design. If you're interested in vacuum systems or thin-film processing, reach out via email or in person.</p>
-      </div>
-      <div class="modal-foot">
-        <div class="modal-status"><div class="dot"></div> Future Project</div>
-        <div>CMU reference build: ~$15,000</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal-bg" id="modal-sputtering" onclick="closeOut(event,'sputtering')">
-  <div class="modal">
-    <div class="modal-top">
-      <div class="modal-top-label">Nanofab · Future</div>
-      <button class="modal-x" onclick="closeModal('sputtering')">✕</button>
-    </div>
-    <div class="modal-gallery">
-      <div class="g-track" id="gt-sputtering">
-        <div class="g-slide"><div class="g-ph"><img src="sputteringSystem.jpg" alt="Sputtering system"></div></div>
-        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: deposited dielectric film</div></div>
-      </div>
-      <div class="g-nav">
-        <button class="g-btn" onclick="gNav('sputtering',-1)">‹</button>
-        <div class="g-count" id="gc-sputtering">1 / 2</div>
-        <button class="g-btn" onclick="gNav('sputtering',1)">›</button>
-      </div>
-      <div class="g-dots" id="gd-sputtering">
-        <button class="gdot on" onclick="gGo('sputtering',0)"></button>
-        <button class="gdot" onclick="gGo('sputtering',1)"></button>
-      </div>
-    </div>
-    <div class="modal-body">
-      <h3>RF Sputtering System</h3>
-      <p class="desc">This is one of our longer-term projects: an RF-powered vacuum system used to deposit thin films onto a wafer. Unlike thermal evaporation, sputtering can deposit insulators like silicon dioxide, which makes it important for our goal of fabricating a MOSFET transistor.</p>
-      <div class="modal-why">
-        <div class="modal-why-label">Why We're Building This</div>
-        <p>A MOSFET transistor needs a thin insulating gate oxide between the gate and the channel. Building the device to deposit that layer is a large step towards this goal.</p>
-      </div>
-      <div class="modal-join">
-        <div class="modal-join-label">How to Get Involved</div>
-        <p>This is still a future project, so getting involved now means helping with research, planning, and design. If you're interested in plasma physics, vacuum engineering, or dielectric materials, reach out via email or in person.</p>
-      </div>
-      <div class="modal-foot">
-        <div class="modal-status"><div class="dot"></div> Future — Year 2–3</div>
-        <div>CMU reference build: ~$18,400</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Slideshow
+<script>
+  let slideshowTimer = null;
   let cur = 0;
-  const slides = document.querySelectorAll('.slideshow .slide');
-  const numEl  = document.getElementById('slide-num');
-  let timer    = setInterval(nextSlide, 5000);
-
-  function goSlide(n) {
-    slides[cur].classList.remove('active');
-    cur = (n + slides.length) % slides.length;
-    slides[cur].classList.add('active');
-    numEl.textContent = `${cur + 1} / ${slides.length}`;
-    clearInterval(timer);
-    timer = setInterval(nextSlide, 5000);
-  }
-  function nextSlide() { goSlide(cur + 1); }
-  function prevSlide() { goSlide(cur - 1); }
-
-  // Gallery
   const gState = {};
+
+  function resetSlideShowState() {
+    if (slideshowTimer) {
+      clearInterval(slideshowTimer);
+      slideshowTimer = null;
+    }
+    cur = 0;
+  }
+
+  function initSlides() {
+    resetSlideShowState();
+    const slides = document.querySelectorAll('.slideshow .slide');
+    const numEl = document.getElementById('slide-num');
+    if (!slides.length || !numEl) return;
+
+    slides.forEach((slide, i) => slide.classList.toggle('active', i === 0));
+    numEl.textContent = `1 / ${slides.length}`;
+
+    function goSlide(n) {
+      const currentSlides = document.querySelectorAll('.slideshow .slide');
+      const currentNumEl = document.getElementById('slide-num');
+      if (!currentSlides.length || !currentNumEl) return;
+      currentSlides[cur].classList.remove('active');
+      cur = (n + currentSlides.length) % currentSlides.length;
+      currentSlides[cur].classList.add('active');
+      currentNumEl.textContent = `${cur + 1} / ${currentSlides.length}`;
+      clearInterval(slideshowTimer);
+      slideshowTimer = setInterval(nextSlide, 5000);
+    }
+
+    window.goSlide = goSlide;
+    window.nextSlide = function() { goSlide(cur + 1); };
+    window.prevSlide = function() { goSlide(cur - 1); };
+
+    slideshowTimer = setInterval(window.nextSlide, 5000);
+  }
+
   function gGo(id, n) {
     const track = document.getElementById('gt-' + id);
+    if (!track) return;
     const total = track.children.length;
-    gState[id] = n;
-    track.style.transform = `translateX(-${n * 100}%)`;
-    document.getElementById('gc-' + id).textContent = `${n + 1} / ${total}`;
+    if (!total) return;
+    const nextIndex = ((n % total) + total) % total;
+    gState[id] = nextIndex;
+    track.style.transform = `translateX(-${nextIndex * 100}%)`;
+
+    const count = document.getElementById('gc-' + id);
+    if (count) count.textContent = `${nextIndex + 1} / ${total}`;
+
     document.querySelectorAll(`#gd-${id} .gdot`).forEach((d, i) => {
-      d.classList.toggle('on', i === n);
+      d.classList.toggle('on', i === nextIndex);
     });
   }
+
   function gNav(id, dir) {
-    const total = document.getElementById('gt-' + id).children.length;
+    const track = document.getElementById('gt-' + id);
+    if (!track) return;
+    const total = track.children.length;
     gGo(id, ((gState[id] || 0) + dir + total) % total);
   }
 
-  // Modals
-  function openModal(id) {
-    // Close any open modals first
+  function closeAllModals() {
     document.querySelectorAll('.modal-bg.open').forEach(function(m) {
       m.classList.remove('open');
     });
     document.body.style.overflow = '';
-    
-    document.getElementById('modal-' + id).classList.add('open');
+  }
+
+  function openModal(id) {
+    closeAllModals();
+    const modal = document.getElementById('modal-' + id);
+    if (!modal) return;
+    modal.classList.add('open');
     document.body.style.overflow = 'hidden';
     gGo(id, 0);
   }
+
   function closeModal(id) {
-    document.getElementById('modal-' + id).classList.remove('open');
+    const modal = document.getElementById('modal-' + id);
+    if (!modal) return;
+    modal.classList.remove('open');
     document.body.style.overflow = '';
   }
+
   function closeOut(e, id) {
-    if (e.target === document.getElementById('modal-' + id)) closeModal(id);
+    const modal = document.getElementById('modal-' + id);
+    if (modal && e.target === modal) closeModal(id);
   }
 
-  // Close on Escape
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.modal-bg.open').forEach(function(m) {
-        m.classList.remove('open');
-      });
-      document.body.style.overflow = '';
+  function setActiveNav(page) {
+    document.querySelectorAll('[data-page-link]').forEach(function(link) {
+      link.classList.toggle('active', link.getAttribute('data-page-link') === page);
+    });
+  }
+
+  function initPageEnhancements() {
+    initSlides();
+    setActiveNav(document.body.dataset.page || 'index');
+    document.querySelectorAll('.g-track').forEach(function(track) {
+      const id = track.id.replace('gt-', '');
+      gGo(id, 0);
+    });
+  }
+
+  async function loadPage(url, pushState = true) {
+    const pageShell = document.getElementById('page-shell');
+    if (!pageShell) {
+      window.location.href = url;
+      return;
     }
+
+    closeAllModals();
+    pageShell.classList.add('is-changing');
+
+    try {
+      const response = await fetch(url, { headers: { 'X-Requested-With': 'spa' } });
+      if (!response.ok) throw new Error('Failed to load page.');
+      const text = await response.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(text, 'text/html');
+
+      const incomingShell = doc.getElementById('page-shell');
+      if (!incomingShell) {
+        window.location.href = url;
+        return;
+      }
+
+      const nextPage = doc.body.dataset.page || 'index';
+      const nextTitle = doc.title || document.title;
+
+      pageShell.innerHTML = incomingShell.innerHTML;
+      document.title = nextTitle;
+      document.body.dataset.page = nextPage;
+      setActiveNav(nextPage);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (pushState) {
+        history.pushState({ url }, '', url);
+      }
+
+      initPageEnhancements();
+
+      requestAnimationFrame(() => {
+        pageShell.classList.remove('is-changing');
+      });
+    } catch (err) {
+      window.location.href = url;
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[data-spa]');
+    if (!link) return;
+
+    const href = link.getAttribute('href');
+    if (!href) return;
+
+    if (link.target === '_blank' || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http')) return;
+
+    e.preventDefault();
+    loadPage(href, true);
   });
+
+  window.addEventListener('popstate', function() {
+    loadPage(location.href, false);
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeAllModals();
+  });
+
+  window.addEventListener('DOMContentLoaded', initPageEnhancements);
 </script>
+
 </body>
 </html>

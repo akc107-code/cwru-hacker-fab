@@ -975,7 +975,7 @@
 
   </style>
 </head>
-<body data-page="team">
+<body data-page="projects">
 <!-- NAV -->
 
 <nav>
@@ -998,92 +998,76 @@
 
 <section class="page-intro">
   <div class="wrap">
-    <div class="label">Team</div>
-    <h2>Meet the Fab</h2>
-    <p class="projects-intro">Leadership, administrative team, and faculty advisors.</p>
+    <div class="label">Projects</div>
+    <h2>What We're Working On</h2>
+    <p class="projects-intro">Click any project to learn more.</p>
   </div>
 </section>
 
-<section id="team">
+<section id="projects">
   <div class="wrap">
-    <div class="label">Team</div>
-    <h2>Meet the Fab</h2>
+    <div class="label">Projects</div>
+    <h2>What We're Working On</h2>
+    <p class="projects-intro">Click any project to learn more.</p>
 
-    <!-- Executive -->
-    <div class="team-section-label">Executive Leadership</div>
-    <div class="team-exec">
-      <div class="member">
-        <div class="member-av">AC</div>
-        <div class="member-name">Andrew Csanady</div>
-        <div class="member-role">President</div>
-        <div class="member-dept">Materials Science &amp; Engineering</div>
-      </div>
-      <div class="member">
-        <div class="member-av">PV</div>
-        <div class="member-name">Pieter Verbeek</div>
-        <div class="member-role">Vice President &amp; Director of Operations</div>
-        <div class="member-dept">Electrical Engineering</div>
-      </div>
-    </div>
+    <div class="proj-grid">
 
-    <!-- Administrative -->
-    <div class="team-section-label">Administrative Leadership</div>
-    <div class="team-admin">
-      <div class="member">
-        <div class="member-av">PC</div>
-        <div class="member-name">Patrick Cadigan</div>
-        <div class="member-role">Director of Finance</div>
-        <div class="member-dept">Budgets, grants &amp; funding</div>
+      <div class="proj-block chip" onclick="openModal('tinytapeout')">
+        <div class="proj-block-img">🔲</div>
+        <div class="proj-block-body">
+          <div class="proj-block-tag">Chip Design · Active</div>
+          <div class="proj-block-name">Tiny Tapeout</div>
+          <div class="proj-block-desc">Every semester, we design chips and submit them to Tiny Tapeout, a program that lets students submit designs to be fabricated. We run workshops so anyone can learn the design tools required to participate.</div>
+          <div class="proj-block-foot">
+            <span class="proj-dot chip-dot"></span>
+            <span class="proj-status-txt chip-txt">Active this semester</span>
+            <span class="proj-open">Details →</span>
+          </div>
+        </div>
       </div>
-      <div class="member">
-        <div class="member-av">NC</div>
-        <div class="member-name">Nathan Camporeale</div>
-        <div class="member-role">Director of Risk &amp; Safety</div>
-        <div class="member-dept">Safety training &amp; compliance</div>
-      </div>
-      <div class="member">
-        <div class="member-av">JP</div>
-        <div class="member-name">JP Magbitang</div>
-        <div class="member-role">Director of Programming</div>
-        <div class="member-dept">Events, workshops &amp; demos</div>
-      </div>
-      <div class="member">
-        <div class="member-av">NS</div>
-        <div class="member-name">Noah Saito</div>
-        <div class="member-role">Director of Communications</div>
-        <div class="member-dept">Outreach, social &amp; website</div>
-      </div>
-      <div class="member">
-        <div class="member-av">KH</div>
-        <div class="member-name">Kevin Harris</div>
-        <div class="member-role">Director of Technology &amp; Chief Engineer</div>
-        <div class="member-dept">Technical projects &amp; roadmap</div>
-      </div>
-    </div>
 
-    <!-- Advisors -->
-    <div class="team-section-label">Faculty Advisors</div>
-    <div class="team-advisors">
-      <div class="member adv">
-        <div class="member-av">AL</div>
-        <div class="member-name">Andrew Lininger</div>
-        <div class="member-role">Faculty Advisor</div>
-        <div class="member-dept">Case School of Engineering</div>
+      <div class="proj-block current" onclick="openModal('stepper')">
+        <div class="proj-block-img">🔬</div>
+        <div class="proj-block-body">
+          <div class="proj-block-tag">Nanofab · Complete</div>
+          <div class="proj-block-name">UV Lithography Stepper</div>
+          <div class="proj-block-desc">We built a UV stepper that can pattern at a 2 micron resolution, smaller than a human hair. With financial support from Think[box], we built it based on CMU's open-source design.</div>
+          <div class="proj-block-foot">
+            <span class="proj-dot blue-dot"></span>
+            <span class="proj-status-txt blue-txt">Complete · $2,500 funded</span>
+            <span class="proj-open">Details →</span>
+          </div>
+        </div>
       </div>
-      <div class="member adv">
-        <div class="member-av">IM</div>
-        <div class="member-name">Ina Martin</div>
-        <div class="member-role">Faculty Advisor</div>
-        <div class="member-dept">Case School of Engineering</div>
-      </div>
-    </div>
 
-    <div class="join-cta">
-      <p>People of all majors accepted, no experience required.</p>
-      <div class="join-cta-btns">
-        <a href="https://discord.com/invite/68jVuvCdPY" target="_blank" class="btn btn-discord">Discord</a>
-        <a href="/cdn-cgi/l/email-protection#bcdfd4d5cccffcdfddcfd992d9d8c9" class="btn btn-blue">Email Us</a>
+      <div class="proj-block current" onclick="openModal('spincoater')">
+        <div class="proj-block-img">⚙️</div>
+        <div class="proj-block-body">
+          <div class="proj-block-tag">Nanofab · Active</div>
+          <div class="proj-block-name">Vacuum Spin Coater</div>
+          <div class="proj-block-desc">Currently building a vacuum spin coater to coat wafers with photoresist before UV exposure. This is the very first step in photolithography.</div>
+          <div class="proj-block-foot">
+            <span class="proj-dot amber-dot"></span>
+            <span class="proj-status-txt amber-txt">Under construction</span>
+            <span class="proj-open">Details →</span>
+          </div>
+        </div>
       </div>
+
+      <div class="proj-block current" onclick="openModal('sputtering')">
+        <div class="proj-block-img">⚡</div>
+        <div class="proj-block-body">
+          <div class="proj-block-tag">Nanofab · Planning</div>
+          <div class="proj-block-name">RF Sputtering System</div>
+          <div class="proj-block-desc">Our next major project, an RF sputtering chamber that lets us deposit gate oxide and dielectric layers. Essential to make a transistor.</div>
+          <div class="proj-block-foot">
+            <span class="proj-dot blue-dot"></span>
+            <span class="proj-status-txt blue-txt">Planning</span>
+            <span class="proj-open">Details →</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1108,6 +1092,253 @@
   </div>
 </footer>
 
+
+<!-- ── MODALS ── -->
+<!-- To add gallery photos: replace <div class="g-ph">...</div> with <img src="images/x.jpg" alt="..."> inside each .g-slide -->
+
+<div class="modal-bg" id="modal-tinytapeout" onclick="closeOut(event,'tinytapeout')">
+  <div class="modal">
+    <div class="modal-top">
+      <div class="modal-top-label">Chip Design · Active</div>
+      <button class="modal-x" onclick="closeModal('tinytapeout')">✕</button>
+    </div>
+    <div class="modal-gallery">
+      <div class="g-track" id="gt-tinytapeout">
+        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: chip design session or schematic</div></div>
+        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: the returned Tiny Tapeout chip / PCB</div></div>
+        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: testing the chip on a development board</div></div>
+      </div>
+      <div class="g-nav">
+        <button class="g-btn" onclick="gNav('tinytapeout',-1)">‹</button>
+        <div class="g-count" id="gc-tinytapeout">1 / 3</div>
+        <button class="g-btn" onclick="gNav('tinytapeout',1)">›</button>
+      </div>
+      <div class="g-dots" id="gd-tinytapeout">
+        <button class="gdot on" onclick="gGo('tinytapeout',0)"></button>
+        <button class="gdot" onclick="gGo('tinytapeout',1)"></button>
+        <button class="gdot" onclick="gGo('tinytapeout',2)"></button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>Tiny Tapeout</h3>
+      <p class="desc">Every semester, we design chips and submit them to Tiny Tapeout, a program that lets students submit designs to be fabricated. We run workshops so anyone can learn the design tools required to participate. When the chips come back, we test them on a development board.</p>
+      <div class="modal-why">
+        <div class="modal-why-label">What You'll Do</div>
+        <p>You'll learn digital or analog chip design using EDA tools like KiCad, OpenLane, and Xschem. You'll contribute to a design, review it with the team, and submit it for fabrication on a 130nm process. When the chip arrives, you help test it. This happens once a semester.</p>
+      </div>
+      <div class="modal-join">
+        <div class="modal-join-label">How to Join This Project</div>
+        <p>No chip design experience is needed; we run workshops at the start of each semester. If you want to participate in the chip design, email us or join the Discord.</p>
+      </div>
+      <div class="modal-foot">
+        <div class="modal-status"><div class="dot green"></div> Active this semester</div>
+        <div>Skywater 130nm · <a href="https://tinytapeout.com" target="_blank" style="color:#3a78c9;">tinytapeout.com</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-stepper" onclick="closeOut(event,'stepper')">
+  <div class="modal">
+    <div class="modal-top">
+      <div class="modal-top-label">Nanofab · Active</div>
+      <button class="modal-x" onclick="closeModal('stepper')">✕</button>
+    </div>
+    <div class="modal-gallery">
+      <div class="g-track" id="gt-stepper">
+        <div class="g-slide"><div class="g-ph"><img src="stepperInProgress.jpg" alt="Stepper in progress"></div></div>
+        <div class="g-slide"><div class="g-ph"><img src="lensAssembly.jpg" alt="Lens assembly"></div></div>
+        <div class="g-slide"><div class="g-ph"><img src="patternedWafer.jpg" alt="Patterned wafer"></div></div>
+      </div>
+      <div class="g-nav">
+        <button class="g-btn" onclick="gNav('stepper',-1)">‹</button>
+        <div class="g-count" id="gc-stepper">1 / 3</div>
+        <button class="g-btn" onclick="gNav('stepper',1)">›</button>
+      </div>
+      <div class="g-dots" id="gd-stepper">
+        <button class="gdot on" onclick="gGo('stepper',0)"></button>
+        <button class="gdot" onclick="gGo('stepper',1)"></button>
+        <button class="gdot" onclick="gGo('stepper',2)"></button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>UV Lithography Stepper</h3>
+      <p class="desc">We're building a UV lithography stepper based on Carnegie Mellon's design. It uses a repurposed projector lens and a UV LED to expose photoresist through a chrome mask at roughly 2 micron resolution. Think[box] supported this build with $2,500 of funding.</p>
+      <div class="modal-why">
+        <div class="modal-why-label">Why We're Building This</div>
+        <p>Lithography is one of the core steps of semiconductor manufacturing. If you want to pattern features on a wafer, we need a reliable way to do it. This tool is an important part of the fabrication process.</p>
+      </div>
+      <div class="modal-join">
+        <div class="modal-join-label">How to Get Involved</div>
+        <p>We're looking for help with mechanical assembly, optical alignment, software, and process testing. No prior experience required; come to a build session and we'll help you get started.</p>
+      </div>
+      <div class="modal-foot">
+        <div class="modal-status"><div class="dot blue"></div> Actively building</div>
+        <div>$2,500 funded via Think[box] · <a href="https://hackerfab.org" target="_blank" style="color:#3a78c9;">hackerfab.org</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-spincoater" onclick="closeOut(event,'spincoater')">
+  <div class="modal">
+    <div class="modal-top">
+      <div class="modal-top-label">Nanofab · Active</div>
+      <button class="modal-x" onclick="closeModal('spincoater')">✕</button>
+    </div>
+    <div class="modal-gallery">
+      <div class="g-track" id="gt-spincoater">
+        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: spin coater build</div></div>
+        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: coated wafer</div></div>
+      </div>
+      <div class="g-nav">
+        <button class="g-btn" onclick="gNav('spincoater',-1)">‹</button>
+        <div class="g-count" id="gc-spincoater">1 / 2</div>
+        <button class="g-btn" onclick="gNav('spincoater',1)">›</button>
+      </div>
+      <div class="g-dots" id="gd-spincoater">
+        <button class="gdot on" onclick="gGo('spincoater',0)"></button>
+        <button class="gdot" onclick="gGo('spincoater',1)"></button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>Vacuum Spin Coater</h3>
+      <p class="desc">We're building a vacuum spin coater that uses a brushless motor and vacuum chuck to spin wafers at controlled speeds, creating a thin, even layer of photoresist before UV exposure.</p>
+      <div class="modal-why">
+        <div class="modal-why-label">Why We're Building This</div>
+        <p>Before a wafer can be exposed, it needs a uniform coating of photoresist, as an uneven layer ruins the exposure and makes it difficult to pattern. This is another of the core fabrication tools needed.</p>
+      </div>
+      <div class="modal-join">
+        <div class="modal-join-label">How to Get Involved</div>
+        <p>We're looking for help with mechanical design, motor electronics, and firmware. It's a well-scoped project, a good place for beginners to join in.</p>
+      </div>
+      <div class="modal-foot">
+        <div class="modal-status"><div class="dot blue"></div> Under construction</div>
+        <div>Build cost: ~$200 (DIY)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-plating" onclick="closeOut(event,'plating')">
+  <div class="modal">
+    <div class="modal-top">
+      <div class="modal-top-label">Nanofab · Planned</div>
+      <button class="modal-x" onclick="closeModal('plating')">✕</button>
+    </div>
+    <div class="modal-gallery">
+      <div class="g-track" id="gt-plating">
+        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: plating bath setup</div></div>
+        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: metal-patterned sample</div></div>
+      </div>
+      <div class="g-nav">
+        <button class="g-btn" onclick="gNav('plating',-1)">‹</button>
+        <div class="g-count" id="gc-plating">1 / 2</div>
+        <button class="g-btn" onclick="gNav('plating',1)">›</button>
+      </div>
+      <div class="g-dots" id="gd-plating">
+        <button class="gdot on" onclick="gGo('plating',0)"></button>
+        <button class="gdot" onclick="gGo('plating',1)"></button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>Electroless Metal Plating</h3>
+      <p class="desc">We're planning a wet chemistry station for depositing thin metal films on patterned surfaces through an autocatalytic reaction, without a vacuum or high voltages.</p>
+      <div class="modal-why">
+        <div class="modal-why-label">Why We're Building This</div>
+        <p>Metal contacts are a basic part of nearly every semiconductor device. Electroless plating lets us add metal to patterned wafers cheaply, while also giving members experience with surface chemistry and metallization.</p>
+      </div>
+      <div class="modal-join">
+        <div class="modal-join-label">How to Get Involved</div>
+        <p>This project is still being planned. If you're interested in chemistry, surface science, or materials processing, reach out via email or in person.</p>
+      </div>
+      <div class="modal-foot">
+        <div class="modal-status"><div class="dot amber"></div> Planning phase</div>
+        <div>Estimated build: ~$500</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-evaporator" onclick="closeOut(event,'evaporator')">
+  <div class="modal">
+    <div class="modal-top">
+      <div class="modal-top-label">Nanofab · Future</div>
+      <button class="modal-x" onclick="closeModal('evaporator')">✕</button>
+    </div>
+    <div class="modal-gallery">
+      <div class="g-track" id="gt-evaporator">
+        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: evaporator chamber</div></div>
+        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: deposited metal film result</div></div>
+      </div>
+      <div class="g-nav">
+        <button class="g-btn" onclick="gNav('evaporator',-1)">‹</button>
+        <div class="g-count" id="gc-evaporator">1 / 2</div>
+        <button class="g-btn" onclick="gNav('evaporator',1)">›</button>
+      </div>
+      <div class="g-dots" id="gd-evaporator">
+        <button class="gdot on" onclick="gGo('evaporator',0)"></button>
+        <button class="gdot" onclick="gGo('evaporator',1)"></button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>Thermal Evaporator</h3>
+      <p class="desc">One of our longer-term goals is to build a thermal evaporator: a vacuum chamber that heats metal until it evaporates and deposits a thin film on the wafer. We'd use it for making aluminum and gold contacts on fabricated devices.</p>
+      <div class="modal-why">
+        <div class="modal-why-label">Why We're Building This</div>
+        <p>Clean metal contacts are essential for making chips that work. Thermal evaporation is a common way to produce better films than wet plating, and is the standard approach in research fabs. Building this would allow us to proceed to more advanced fabrication work.</p>
+      </div>
+      <div class="modal-join">
+        <div class="modal-join-label">How to Get Involved</div>
+        <p>This is still a future project, so getting involved now means helping with research, planning, and design. If you're interested in vacuum systems or thin-film processing, reach out via email or in person.</p>
+      </div>
+      <div class="modal-foot">
+        <div class="modal-status"><div class="dot"></div> Future Project</div>
+        <div>CMU reference build: ~$15,000</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="modal-sputtering" onclick="closeOut(event,'sputtering')">
+  <div class="modal">
+    <div class="modal-top">
+      <div class="modal-top-label">Nanofab · Future</div>
+      <button class="modal-x" onclick="closeModal('sputtering')">✕</button>
+    </div>
+    <div class="modal-gallery">
+      <div class="g-track" id="gt-sputtering">
+        <div class="g-slide"><div class="g-ph"><img src="sputteringSystem.jpg" alt="Sputtering system"></div></div>
+        <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: deposited dielectric film</div></div>
+      </div>
+      <div class="g-nav">
+        <button class="g-btn" onclick="gNav('sputtering',-1)">‹</button>
+        <div class="g-count" id="gc-sputtering">1 / 2</div>
+        <button class="g-btn" onclick="gNav('sputtering',1)">›</button>
+      </div>
+      <div class="g-dots" id="gd-sputtering">
+        <button class="gdot on" onclick="gGo('sputtering',0)"></button>
+        <button class="gdot" onclick="gGo('sputtering',1)"></button>
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>RF Sputtering System</h3>
+      <p class="desc">This is one of our longer-term projects: an RF-powered vacuum system used to deposit thin films onto a wafer. Unlike thermal evaporation, sputtering can deposit insulators like silicon dioxide, which makes it important for our goal of fabricating a MOSFET transistor.</p>
+      <div class="modal-why">
+        <div class="modal-why-label">Why We're Building This</div>
+        <p>A MOSFET transistor needs a thin insulating gate oxide between the gate and the channel. Building the device to deposit that layer is a large step towards this goal.</p>
+      </div>
+      <div class="modal-join">
+        <div class="modal-join-label">How to Get Involved</div>
+        <p>This is still a future project, so getting involved now means helping with research, planning, and design. If you're interested in plasma physics, vacuum engineering, or dielectric materials, reach out via email or in person.</p>
+      </div>
+      <div class="modal-foot">
+        <div class="modal-status"><div class="dot"></div> Future — Year 2–3</div>
+        <div>CMU reference build: ~$18,400</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   let slideshowTimer = null;
