@@ -364,7 +364,7 @@
     }
 
     .proj-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
+      display: grid; grid-template-columns: repeat(4, 1fr);
       gap: 1px; background: #cccccc; border: 1px solid #cccccc;
     }
 
@@ -489,7 +489,7 @@
       padding: 20px;
     }
 
-    .modal-bg.open { display: flex; align-items: flex-start; justify-content: center; }
+    .modal-bg.open { display: flex; align-items: center; justify-content: center; }
 
     .modal {
       background: #ffffff;
@@ -497,6 +497,8 @@
       width: 100%;
       max-width: 640px;
       margin: auto;
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
     .modal-top {
@@ -540,6 +542,7 @@
     .g-track {
       display: flex;
       height: 100%;
+      transition: transform 0.25s ease;
     }
 
     .g-slide {
@@ -909,6 +912,7 @@
       .pillars { grid-template-columns: 1fr; }
       .about-links { flex-direction: column; }
       .project-row { grid-template-columns: 100px 1fr auto; }
+      .proj-grid { grid-template-columns: 1fr 1fr; }
       .team-exec { grid-template-columns: 1fr 1fr; }
       .team-admin { grid-template-columns: 1fr 1fr; }
       .team-advisors { grid-template-columns: 1fr 1fr; }
@@ -953,8 +957,8 @@
   -->
   <div class="slideshow">
     <div class="slide active"><div class="slide-ph">[ photo: lab / equipment ]</div></div>
-    <div class="slide"><img src="studentsWorking.jpg"</div>
-    <div class="slide"><img src="stepper.jpg"</div>
+    <div class="slide"><img src="studentsWorking.jpg" alt="Students working in the lab"></div>
+    <div class="slide"><img src="stepper.jpg" alt="UV lithography stepper"></div>
     <div class="slide"><div class="slide-ph">[ photo: chip design session ]</div></div>
     <div class="slide-controls">
       <button class="slide-btn" onclick="prevSlide()">&#8592;</button>
@@ -1297,9 +1301,9 @@
     </div>
     <div class="modal-gallery">
       <div class="g-track" id="gt-stepper">
-        <div class="g-slide"><div class="g-ph"><img src="stepperInProgress.jpg"</div>
-        <div class="g-slide"><div class="g-ph"><img src="lensAssembly.jpg"</div>
-        <div class="g-slide"><div class="g-ph"><img src="patternedWafer.jpg"</div>
+        <div class="g-slide"><div class="g-ph"><img src="stepperInProgress.jpg" alt="Stepper in progress"></div></div>
+        <div class="g-slide"><div class="g-ph"><img src="lensAssembly.jpg" alt="Lens assembly"></div></div>
+        <div class="g-slide"><div class="g-ph"><img src="patternedWafer.jpg" alt="Patterned wafer"></div></div>
       </div>
       <div class="g-nav">
         <button class="g-btn" onclick="gNav('stepper',-1)">‹</button>
@@ -1459,7 +1463,7 @@
     </div>
     <div class="modal-gallery">
       <div class="g-track" id="gt-sputtering">
-        <div class="g-slide"><div class="g-ph"><img src="sputteringSystem.jpg"</div>
+        <div class="g-slide"><div class="g-ph"><img src="sputteringSystem.jpg" alt="Sputtering system"></div></div>
         <div class="g-slide"><div class="g-ph"><div class="g-ph-icon">📷</div>Add photo: deposited dielectric film</div></div>
       </div>
       <div class="g-nav">
@@ -1528,6 +1532,12 @@
 
   // Modals
   function openModal(id) {
+    // Close any open modals first
+    document.querySelectorAll('.modal-bg.open').forEach(function(m) {
+      m.classList.remove('open');
+    });
+    document.body.style.overflow = '';
+    
     document.getElementById('modal-' + id).classList.add('open');
     document.body.style.overflow = 'hidden';
     gGo(id, 0);
@@ -1545,8 +1555,8 @@
     if (e.key === 'Escape') {
       document.querySelectorAll('.modal-bg.open').forEach(function(m) {
         m.classList.remove('open');
-        document.body.style.overflow = '';
       });
+      document.body.style.overflow = '';
     }
   });
 </script>
