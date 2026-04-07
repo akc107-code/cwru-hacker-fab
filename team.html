@@ -1077,9 +1077,95 @@
       color: #003087;
     }
 
+    .nav-links a.active,
+    .footer-nav a.active {
+      color: #003087;
+    }
+
+    .nav-links a.active:not(.nav-join) {
+      position: relative;
+    }
+
+    .nav-links a.active:not(.nav-join)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -18px;
+      height: 2px;
+      background: #003087;
+    }
+
+    body[data-page="projects"] .proj-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      background: transparent;
+      border: none;
+    }
+
+    body[data-page="projects"] .proj-block {
+      background: #ffffff;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      border: 1px solid #cccccc;
+      transition: background 0.18s, border-color 0.18s, transform 0.18s;
+      min-height: 220px;
+      overflow: hidden;
+    }
+
+    body[data-page="projects"] .proj-block:hover {
+      background: #f5f5f5;
+      border-color: #999999;
+      transform: translateY(-1px);
+    }
+
+    body[data-page="projects"] .proj-block-img {
+      width: 100%;
+      height: 100%;
+      min-height: 220px;
+      background: #e8e8e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    body[data-page="projects"] .proj-block-body {
+      padding: 24px 24px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 0;
+    }
+
+    body[data-page="projects"] .proj-open {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #666666;
+      opacity: 1;
+      transition: color 0.18s;
+      white-space: nowrap;
+    }
+
+    body[data-page="projects"] .proj-block:hover .proj-open {
+      color: #333333;
+    }
+
+    @media (max-width: 680px) {
+      body[data-page="projects"] .proj-grid { grid-template-columns: 1fr; }
+      body[data-page="projects"] .proj-block { grid-template-columns: 1fr; min-height: 0; }
+      body[data-page="projects"] .proj-block-img { min-height: 180px; }
+    }
+
   </style>
 </head>
-<body>
+<body data-page="team">
 
 <!-- NAV -->
 <nav>
@@ -1091,7 +1177,7 @@
     <ul class="nav-links">
       <li><a href="index.html">About</a></li>
       <li><a href="projects.html">Projects</a></li>
-      <li><a href="team.html">Team</a></li>
+      <li><a href="team.html" class="active">Team</a></li>
       <li><a href="support.html">Support</a></li>
       <li><a href="https://discord.gg/yZhyKUgQrt" class="nav-join">Join Us!</a></li>
     </ul>
@@ -1187,14 +1273,6 @@
       <div class="name">CWRU CHIPS — Hacker Fab</div>
       <div class="school">Case Western Reserve University · Cleveland, OH · Est. 2025</div>
     </div>
-    <ul class="footer-nav">
-      <li><a href="cwru_chips_hacker_fab_fixed_split_main.html#about">About</a></li>
-      <li><a href="cwru_chips_hacker_fab_fixed_split_main.html#projects">Projects</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="cwru_chips_hacker_fab_fixed_split_main.html#support">Support</a></li>
-      <li><a href="https://hackerfab.org" target="_blank">Hacker Fab</a></li>
-      <li><a href="/cdn-cgi/l/email-protection#96f5feffe6e5d6f5f7e5f3b8f3f2e3">Contact</a></li>
-    </ul>
     <div class="footer-copy">© 2025 CWRU CHIPS</div>
   </div>
 </footer>
