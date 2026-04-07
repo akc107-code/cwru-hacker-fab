@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CWRU CHIPS — Hacker Fab</title>
+  <title>CWRU CHIPS</title>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
 
-    /* ── Base ── */
+    /* Base */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
@@ -62,7 +62,7 @@
       margin-bottom: 10px;
     }
 
-    /* ── Nav ── */
+    /* Nav */
     nav {
       position: sticky;
       top: 0;
@@ -72,14 +72,16 @@
     }
 
     .nav-inner {
-      max-width: 900px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 0 24px;
-      height: 54px;
+      padding: 14px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 24px;
     }
+
+    
 
     .nav-logo {
       display: flex;
@@ -110,6 +112,10 @@
       align-items: center;
       gap: 22px;
       list-style: none;
+      margin: 0 0 0 auto;
+      padding: 0;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
@@ -130,7 +136,7 @@
 
     .nav-join:hover { background: #0040a8; }
 
-    /* ── Hero ── */
+    /* Hero */
     #hero {
       padding: 0;
       border-bottom: 1px solid #dddddd;
@@ -279,7 +285,7 @@
 
     .btn-discord:hover { background: #4752c4; border-color: #4752c4; }
 
-    /* ── About ── */
+    /* About */
     #about { background: #f9f9f9; }
 
     .about-intro {
@@ -340,7 +346,7 @@
       margin: 0;
     }
 
-    /* ── Projects ── */
+    /* Projects */
     #projects { background: #f5f5f5; }
 
     .projects-intro {
@@ -349,24 +355,50 @@
     }
 
     .proj-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1px; background: #cccccc; border: 1px solid #cccccc;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      background: transparent;
+      border: none;
     }
 
     .proj-block {
-      background: #ffffff; cursor: pointer;
-      display: flex; flex-direction: column; transition: background 0.18s;
+      background: #ffffff;
+      cursor: pointer;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      border: 1px solid #cccccc;
+      transition: background 0.18s, border-color 0.18s, transform 0.18s;
+      height: 220px;
+      overflow: hidden;
     }
-    .proj-block:hover { background: #f5f5f5; }
+    .proj-block:hover {
+      background: #f5f5f5;
+      border-color: #999999;
+      transform: translateY(-1px);
+    }
 
     .proj-block-img {
-      width: 100%; height: 180px; background: #e8e8e8;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.8rem; flex-shrink: 0; overflow: hidden;
+      width: 220px;
+      height: 220px;
+      background: #e8e8e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      flex-shrink: 0;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
     }
     .proj-block-img img { width: 100%; height: 100%; object-fit: cover; }
 
-    .proj-block-body { padding: 22px 20px; display: flex; flex-direction: column; flex: 1; }
+    .proj-block-body {
+      padding: 24px 24px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 0;
+    }
 
     .proj-block-tag {
       font-family: 'DM Mono', monospace; font-size: 0.6rem;
@@ -408,11 +440,11 @@
     .proj-open {
       font-family: 'DM Mono', monospace; font-size: 0.6rem;
       letter-spacing: 0.08em; text-transform: uppercase;
-      color: #cccccc; opacity: 0; transition: opacity 0.18s;
+      color: #666666; opacity: 1; transition: color 0.18s;
     }
-    .proj-block:hover .proj-open { opacity: 1; color: #666666; }
+    .proj-block:hover .proj-open { color: #333333; }
 
-    /* ── Support ── */
+    /* Support */
     #support { background: #f5f5f5; }
 
     .sup-intro {
@@ -421,39 +453,55 @@
     }
 
     .sup-cards {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1px; background: #cccccc; border: 1px solid #cccccc; margin-bottom: 16px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-bottom: 16px;
     }
 
     .sup-card {
-      background: #ffffff; padding: 28px 24px;
-      display: flex; flex-direction: column; gap: 8px;
-      text-decoration: none; color: inherit; transition: background 0.18s;
+      background: #003087;
+      border: 1px solid #003087;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.18s, border-color 0.18s;
     }
-    .sup-card:hover { background: #f5f5f5; }
+    .sup-card:hover { background: #0040a8; }
 
     .sup-card-primary { background: #003087; }
     .sup-card-primary:hover { background: #0040a8; }
 
-    .sup-card-icon { font-size: 1.1rem; color: #888888; margin-bottom: 4px; line-height: 1; }
+    .sup-card:nth-child(even) { background: #ffffff; border-color: #cccccc; }
+    .sup-card:nth-child(even):hover { background: #f5f5f5; }
+
+    .sup-card-icon { font-size: 1.1rem; color: rgba(255,255,255,0.4); margin-bottom: 4px; line-height: 1; }
     .sup-card-primary .sup-card-icon { color: rgba(255,255,255,0.4); }
+    .sup-card:nth-child(even) .sup-card-icon { color: #888888; }
 
     .sup-card-title {
       font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem;
       letter-spacing: 0.03em; color: #222222; line-height: 1;
     }
     .sup-card-primary .sup-card-title { color: #fff; }
+    .sup-card:nth-child(even) .sup-card-title { color: #222222; }
 
-    .sup-card-desc { font-size: 0.83rem; color: #666666; font-weight: 300; line-height: 1.7; flex: 1; }
+    .sup-card-desc { font-size: 0.83rem; color: rgba(255,255,255,0.68); font-weight: 300; line-height: 1.7; flex: 1; }
     .sup-card-primary .sup-card-desc { color: rgba(255,255,255,0.55); }
+    .sup-card:nth-child(even) .sup-card-desc { color: #666666; }
 
     .sup-card-cta {
       font-family: 'DM Mono', monospace; font-size: 0.65rem;
       letter-spacing: 0.1em; text-transform: uppercase; color: #777777; margin-top: 8px;
     }
     .sup-card-primary .sup-card-cta { color: rgba(255,255,255,0.5); }
-    .sup-card:hover .sup-card-cta { color: #333333; }
+    .sup-card:hover .sup-card-cta { color: rgba(255,255,255,0.88); }
     .sup-card-primary:hover .sup-card-cta { color: rgba(255,255,255,0.8); }
+    .sup-card:nth-child(even) .sup-card-cta { color: #777777; }
+    .sup-card:nth-child(even):hover .sup-card-cta { color: #333333; }
 
     .sup-note {
       font-size: 0.82rem; color: #666666; font-weight: 300; font-style: italic;
@@ -701,7 +749,7 @@
     .dot.green { background: #6a9a4a; }
     .dot.amber { background: #b07030; }
 
-    /* ── Team ── */
+    /* Team */
     #team { background: #f9f9f9; }
 
     /* Executive row */
@@ -835,7 +883,7 @@
       flex-shrink: 0;
     }
 
-    /* ── Footer ── */
+    /* Footer */
     footer {
       background: #e8e8e8;
       border-top: 1px solid #cccccc;
@@ -891,12 +939,12 @@
       color: #666666;
     }
 
-    /* ── Responsive ── */
+    /* Responsive */
     @media (max-width: 760px) {
       .nav-links li:not(:last-child) { display: none; }
       .pillars { grid-template-columns: 1fr; }
       .project-row { grid-template-columns: 100px 1fr auto; }
-      .proj-grid { grid-template-columns: 1fr 1fr; }
+      .proj-grid { grid-template-columns: 1fr; }
       .team-exec { grid-template-columns: 1fr 1fr; }
       .team-admin { grid-template-columns: 1fr 1fr; }
       .team-advisors { grid-template-columns: 1fr 1fr; }
@@ -913,7 +961,7 @@
     }
 
   
-    /* ── Multi-page SPA Enhancements ── */
+    /* Multi-page SPA Enhancements */
     .nav-links a.active,
     .footer-nav a.active {
       color: #003087;
@@ -921,6 +969,9 @@
 
     .nav-links a.active:not(.nav-join) {
       position: relative;
+      display: inline-flex;
+      align-items: center;
+      padding-bottom: 2px;
     }
 
     .nav-links a.active:not(.nav-join)::after {
@@ -928,8 +979,8 @@
       position: absolute;
       left: 0;
       right: 0;
-      bottom: -18px;
-      height: 2px;
+      bottom: -15px;
+      height: 3px;
       background: #003087;
     }
 
@@ -956,10 +1007,10 @@
       background: #ffffff;
       cursor: pointer;
       display: grid;
-      grid-template-columns: 240px 1fr;
+      grid-template-columns: 220px 1fr;
       border: 1px solid #cccccc;
       transition: background 0.18s, border-color 0.18s, transform 0.18s;
-      min-height: 220px;
+      height: 220px;
       overflow: hidden;
     }
 
@@ -970,9 +1021,8 @@
     }
 
     body[data-page="projects"] .proj-block-img {
-      width: 100%;
-      height: 100%;
-      min-height: 220px;
+      width: 220px;
+      height: 220px;
       background: #e8e8e8;
       display: flex;
       align-items: center;
@@ -980,6 +1030,7 @@
       font-size: 2.8rem;
       flex-shrink: 0;
       overflow: hidden;
+      aspect-ratio: 1 / 1;
     }
 
     body[data-page="projects"] .proj-block-body {
@@ -1032,8 +1083,7 @@
 <nav>
   <div class="nav-inner">
     <a href="index.html#hero" class="nav-logo" data-spa>
-      <div class="nav-badge">CWRU</div>
-      <div class="nav-name">CHIPS — Hacker Fab</div>
+      <div class="nav-badge">CWRU CHIPS</div>
     </a>
     <ul class="nav-links">
       <li><a href="index.html#about" data-page-link="index" data-spa>About</a></li>
@@ -1050,7 +1100,7 @@
 <!-- HERO -->
 <section id="hero">
   <!--
-    SLIDESHOW — To add a real photo, replace <div class="slide-ph">...</div>
+    SLIDESHOW: To add a real photo, replace <div class="slide-ph">...</div>
     inside any .slide with: <img src="images/your-photo.jpg" alt="description">
   -->
   <div class="slideshow">
@@ -1068,8 +1118,7 @@
   <div class="wrap">
     <div class="hero-body">
       <div class="hero-tagline">a fab for students, by students</div>
-      <h1>CWRU CHIPS<br/><span>HACKER FAB</span></h1>
-      <p class="hero-desc">A club building semiconductors from scratch without a cleanroom or any expensive lab equipment</p>
+      <h1>CWRU <span>CHIPS</span></h1>
       <div class="hero-actions">
         <a href="https://community.case.edu/chips/club_signup" class="btn btn-blue">CampusGroups</a>
         <a href="https://discord.gg/68jVuvCdPY" target="_blank" class="btn btn-discord">Discord</a>
@@ -1082,8 +1131,8 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap">
-    <h2>INTRODUCTION</h2>
-    <p class="about-intro">CWRU CHIPS is an organization founded by students, where we build our own microfabrication equipment and design semiconductor chips. 
+    <h2>INTRODUCTION.</h2>
+    <p class="about-intro">CWRU CHIPS (formerly known as CWRU Hacker Fab) is an organization founded by students, where we build our own microfabrication equipment and design semiconductor chips. 
     We're the Case Western Reserve chapter of the international <a href="https://hackerfab.org" target="_blank" style="color:#3a78c9;">Hacker Fab</a> community, 
     a growing group of university chapters working on building their open-source and affordable fabs. Our organization is open to all students, regardless of major or
     level of experience. We welcome anyone who's curious about semiconductors and wants to contribute to our efforts!</p>
@@ -1113,10 +1162,10 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="name">CWRU CHIPS — Hacker Fab</div>
-      <div class="school">Case Western Reserve University · Cleveland, OH · Est. 2025</div>
+      <div class="name">CWRU CHIPS</div>
+      <div class="school">Case Western Reserve University &middot; Cleveland, OH &middot; Est. 2025</div>
     </div>
-    <div class="footer-copy">© 2025 CWRU CHIPS</div>
+    <div class="footer-copy">&copy; 2025 CWRU CHIPS</div>
   </div>
 </footer>
 
