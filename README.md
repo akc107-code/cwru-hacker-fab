@@ -1,1 +1,1 @@
-# cwru-hacker-fab - 2026
+# cwru-hacker-fab
